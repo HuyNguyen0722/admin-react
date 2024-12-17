@@ -1,21 +1,137 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames/bind'
 import styles from './sidebar.module.scss'
+import { Link } from 'react-router-dom'
+import { MdDashboard, MdProductionQuantityLimits, MdOutlineDeliveryDining, MdHealthAndSafety, MdLogout } from "react-icons/md";
+import { FaUser, FaRegUserCircle } from "react-icons/fa";
+import { AiFillCustomerService } from "react-icons/ai";
+import { IoIosStats, IoIosNotificationsOutline } from "react-icons/io";
+import { RiFileHistoryLine } from "react-icons/ri";
+import { CiSettings } from "react-icons/ci";
+import { DarkModeContext } from '../../context/darkModeContext'
 
 const cx = classNames.bind(styles)
 const Sidebar = () => {
 
-    const menuItems = [
+  const { dispatch } = useContext(DarkModeContext)
+
+  const menuItems = [
+    {
+      title: 'Main',
+      list: [
         {
-            title: 'Home',
-            icon: 'home',
-            path: '/'
+          title: 'Dashboard',
+          href: '',
+          icon: <MdDashboard />
         }
-    ]
+      ]
+    },
+    {
+      title: 'Lists',
+      list: [
+        {
+          title: 'Users',
+          href: '/user',
+          icon: <FaUser />
+        },
+        {
+          title: 'Products',
+          href: '/product',
+          icon: <MdProductionQuantityLimits />
+        },
+        {
+          title: 'Orders',
+          href: '/order',
+          icon: <AiFillCustomerService />
+        },
+        {
+          title: 'Delivery',
+          href: '/delivery',
+          icon: <MdOutlineDeliveryDining />
+        },
+      ],
+    },
+    {
+      title: 'Useful',
+      list: [
+        {
+          title: 'Stats',
+          href: '/user',
+          icon: <IoIosStats />
+        },
+        {
+          title: 'Notifications',
+          href: '/product',
+          icon: <IoIosNotificationsOutline />
+        }
+      ],
+    },
+    {
+      title: 'Service',
+      list: [
+        {
+          title: 'System Health',
+          href: '/user',
+          icon: <MdHealthAndSafety />
+        },
+        {
+          title: 'Logs',
+          href: '/product',
+          icon: <RiFileHistoryLine />
+        },
+        {
+          title: 'Settings',
+          href: '/product',
+          icon: <CiSettings />
+        }
+      ],
+    },
+    {
+      title: 'User',
+      list: [
+        {
+          title: 'Profile',
+          href: '/user',
+          icon: <FaRegUserCircle />
+        },
+        {
+          title: 'Logout',
+          href: '/product',
+          icon: <MdLogout />
+        }
+      ],
+    }
+  ]
 
   return (
-    <div className={cx("container")}>
-
+    <div className={cx('container')}>
+      <div className={cx("container-top")}>
+        <span className={cx("logo")}>Admin</span>
+      </div>
+      <hr />
+      <div className={cx("container-center")}>
+        <ul className={cx("container-list")}>
+          {menuItems.map((item) => (
+            <li key={item.title}>
+              <span className={cx('menu-title')}>{item.title}</span>
+              <ul className={cx('sub-menu')}>
+                {item.list.map((item) => (
+                  <li key={item.href}>
+                    <Link to={item.href} className={cx('submenu-link')}>
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={cx("container-bottom")}>
+        <div className={cx("colorOption")} onClick={() => dispatch({ type: "LIGHT" })}></div>
+        <div className={cx("colorOption")} onClick={() => dispatch({ type: "DARK" })}></div>
+      </div>
     </div>
   )
 }
