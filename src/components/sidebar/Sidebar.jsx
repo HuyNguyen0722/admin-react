@@ -21,7 +21,7 @@ const Sidebar = () => {
       list: [
         {
           title: 'Dashboard',
-          href: '',
+          href: '/',
           icon: <MdDashboard />
         }
       ]
@@ -36,7 +36,7 @@ const Sidebar = () => {
         },
         {
           title: 'Products',
-          href: '/product',
+          href: '/products',
           icon: <MdProductionQuantityLimits />
         },
         {
@@ -61,7 +61,7 @@ const Sidebar = () => {
         },
         {
           title: 'Notifications',
-          href: '/product',
+          href: '/products',
           icon: <IoIosNotificationsOutline />
         }
       ],
@@ -76,12 +76,12 @@ const Sidebar = () => {
         },
         {
           title: 'Logs',
-          href: '/product',
+          href: '/products',
           icon: <RiFileHistoryLine />
         },
         {
           title: 'Settings',
-          href: '/product',
+          href: '/products',
           icon: <CiSettings />
         }
       ],
@@ -96,7 +96,7 @@ const Sidebar = () => {
         },
         {
           title: 'Logout',
-          href: '/product',
+          href: '/products',
           icon: <MdLogout />
         }
       ],
