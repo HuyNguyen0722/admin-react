@@ -6,6 +6,7 @@ import Navbar from '../../components/navbar/Navbar';
 import Widget from '../../components/widget/Widget';
 import Featured from '../../components/featured/Featured';
 import Chart from '../../components/chart/Chart';
+import Tables from '../../components/table/Table';
 
 const cx = classNames.bind(styles)
 
@@ -29,6 +30,7 @@ function Home() {
                     <div className={cx("listTitle")}>
                         Latest Transactions
                     </div>
+                    <Tables />
                 </div>
             </div>
         </div>

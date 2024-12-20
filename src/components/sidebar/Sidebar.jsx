@@ -31,7 +31,7 @@ const Sidebar = () => {
       list: [
         {
           title: 'Users',
-          href: '/user',
+          href: '/users',
           icon: <FaUser />
         },
         {
@@ -56,7 +56,7 @@ const Sidebar = () => {
       list: [
         {
           title: 'Stats',
-          href: '/user',
+          href: '/users',
           icon: <IoIosStats />
         },
         {
@@ -71,7 +71,7 @@ const Sidebar = () => {
       list: [
         {
           title: 'System Health',
-          href: '/user',
+          href: '/users',
           icon: <MdHealthAndSafety />
         },
         {
@@ -91,7 +91,7 @@ const Sidebar = () => {
       list: [
         {
           title: 'Profile',
-          href: '/user',
+          href: '/users',
           icon: <FaRegUserCircle />
         },
         {
