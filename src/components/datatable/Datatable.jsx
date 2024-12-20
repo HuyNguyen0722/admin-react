@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from './datatable.module.scss'
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const cx = classNames.bind(styles)
@@ -10,6 +10,11 @@ const cx = classNames.bind(styles)
 function Datatable() {
 
     const [data, setData] = useState(userRows)
+
+    const location = useLocation()
+
+    const isProductsPage = location.pathname.includes('/products');
+    const isUsersPage = location.pathname.includes('/users');
 
     const handleDelete = (id) => {
         setData(data.filter((item) => item.id !== id))
@@ -23,7 +28,8 @@ function Datatable() {
             renderCell: (params) => {
                 return (
                     <div className={cx("cellAction")}>
-                        <Link to={`/users/${params.row.id}`} style={{ textDecoration: "none" }}>
+                        <Link to={isProductsPage ? "/products/new" : isUsersPage ? "/users/new" : "#"}
+                            style={{ textDecoration: "none" }}>
                             <div className={cx("viewButton")}>View</div>
                         </Link>
                         <div
@@ -41,8 +47,11 @@ function Datatable() {
     return (
         <div className={cx("datatable")}>
             <div className={cx("datatableTitle")}>
-                Add New User
-                <Link to="/users/new" className={cx("link")}>
+                {isProductsPage ? 'Add New Product' : isUsersPage ? 'Add New User' : 'Add New'}
+                <Link
+                    to={isProductsPage ? "/products/new" : isUsersPage ? "/users/new" : "#"}
+                    className={cx("link")}
+                >
                     Add New
                 </Link>
             </div>
